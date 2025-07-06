@@ -18,16 +18,32 @@ timeline.fromTo(verticalLines, {
     ease: 'ease.inOut',
 });
 
-timeline.fromTo(logoText, {
-    opacity: 1,
-    y: -1000,
-}, {
-    opacity: 1,
-    y: 0,
-    duration: 0.5,
-    stagger: 0.1,
-    ease: 'ease.inOut',
-}, "=-0.5");
+logoText.forEach((text, index) => {
+  timeline.fromTo(
+    text,
+    {
+      opacity: 0,
+      y: index % 2 === 0 ? -100 : 100,
+      scale: 0.8,
+      rotate: index % 2 === 0 ? -10 : 10,
+      skewY: 10,
+      filter: 'blur(10px)',
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      skewY: 0,
+      filter: 'blur(0px)',
+      duration: 0.6,
+      ease: 'back.out(1.7)',
+    },
+    index * 0.1
+  );
+});
+
+
 
 
 timeline.fromTo(navText, {
@@ -38,14 +54,14 @@ timeline.fromTo(navText, {
     y: 0,
     duration: 0.5,
     stagger: 0.1,
-});
+}, "=-1.25");
 
-gsap.fromTo(logo, 
-    { 
+gsap.fromTo(logo,
+    {
         scale: 1,
         y: 0,
-     },
-    { 
+    },
+    {
         scale: 0.17,
         y: -120,
         duration: 1,
@@ -76,13 +92,25 @@ gsap.fromTo(navbar, {
 const split = new SplitText("#heroPara", { type: "lines" });
 
 timeline.fromTo(split.lines, {
-  x: 100,
-  opacity: 0,
+    x: 100,
+    opacity: 0,
 }, {
-  x: 0,
-  opacity: 1,
-  duration: 0.5,
-  stagger: 0.1,
-  ease: "power1.out",
-}, "=-2");
+    x: 0,
+    opacity: 1,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "power1.out",
+}, "=-1");
+
+const sticeker1 = document.querySelector('#sticker-1');
+
+timeline.fromTo(sticeker1, {
+    x: -1000,
+    opacity: 0,
+}, {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    ease: 'ease.inOut',
+}, "=-1.5");
 
