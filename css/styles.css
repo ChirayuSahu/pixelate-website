@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'JeanLuc-Bold';
+  src: url('/fonts/JeanLuc-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+.font-jean {
+  font-family: 'JeanLuc-Bold', sans-serif;
+}
