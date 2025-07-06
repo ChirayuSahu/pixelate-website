@@ -3,11 +3,20 @@ const navbar = document.querySelector('#navbar');
 const navText = document.querySelectorAll('.nav-text');
 const logoText = document.querySelectorAll('.logo-text');
 const heroVideo = document.querySelector('#heroVideo');
+const verticalLines = document.querySelectorAll('.vertical-lines');
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const timeline = gsap.timeline();
 
+timeline.fromTo(verticalLines, {
+    y: -1500,
+}, {
+    y: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'ease.inOut',
+});
 
 timeline.fromTo(logoText, {
     opacity: 1,
@@ -18,7 +27,7 @@ timeline.fromTo(logoText, {
     duration: 0.5,
     stagger: 0.1,
     ease: 'ease.inOut',
-});
+}, "=-0.5");
 
 
 timeline.fromTo(navText, {
@@ -29,15 +38,6 @@ timeline.fromTo(navText, {
     y: 0,
     duration: 0.5,
     stagger: 0.1,
-});
-
-gsap.fromTo(heroVideo, {
-    opacity: 0,
-}, {
-    opacity: 1,
-    duration: 0.5,
-    delay: 0.5,
-    ease: 'ease.inOut',
 });
 
 gsap.fromTo(logo, 
@@ -60,15 +60,29 @@ gsap.fromTo(logo,
 );
 
 gsap.fromTo(navbar, {
-    y: 10,
+    y: -20,
 }, {
     y: -358,
     duration: 1,
     ease: 'linear',
     scrollTrigger: {
         trigger: navbar,
-        start: 'top 40%',
+        start: 'top 35%',
         end: 'bottom 20%',
         scrub: true,
     }
 });
+
+const split = new SplitText("#heroPara", { type: "lines" });
+
+timeline.fromTo(split.lines, {
+  x: 100,
+  opacity: 0,
+}, {
+  x: 0,
+  opacity: 1,
+  duration: 0.5,
+  stagger: 0.1,
+  ease: "power1.out",
+}, "=-2");
+
