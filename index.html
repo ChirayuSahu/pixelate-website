@@ -7,7 +7,7 @@
     <title>Pixelate - The Design Club</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -15,45 +15,70 @@
 <body>
     <div id="smooth-wrapper" class="relative overflow-hidden">
         <div id="smooth-content" class="relative overflow-hidden">
-            <div id="heroVideo" class="absolute inset-0 bg-black z-10 opacity-50 min-h-screen">
-                <video id="heroVideo" autoplay loop muted class="absolute w-full h-full object-cover">
+
+            <!-- Hero video section -->
+            <div id="heroVideo" class="absolute inset-0 bg-black z-10 opacity-100 min-h-screen">
+                <video id="heroVideo" autoplay loop muted class="absolute w-full min-h-screen object-cover">
                     <source src="assets/bg-video.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="absolute inset-0 bg-black z-20 opacity-50 min-h-screen">
 
+            <!-- Background noise effect -->
+            <div class="absolute inset-0 noise-bg z-20 min-h-screen"></div>
+            <div
+                class="absolute inset-0 bg-black z-20 opacity-20 min-h-screen max-h-screen flex items-center justify-center">
+                <svg id="lineSvg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="5%" y1="0" x2="5%" y2="100%" stroke="white" stroke-width="2"
+                        class="vertical-lines opacity-40" />
+                    <line x1="15%" y1="0" x2="15%" y2="100%" stroke="white" stroke-width="2"
+                        class="vertical-lines opacity-40" />
+                    <line x1="30%" y1="0" x2="30%" y2="100%" stroke="white" stroke-width="2"
+                        class="vertical-lines opacity-40" />
+                    <line x1="45%" y1="0" x2="45%" y2="100%" stroke="white" stroke-width="2"
+                        class="vertical-lines opacity-40" />
+                    <line x1="80%" y1="0" x2="80%" y2="100%" stroke="white" stroke-width="2"
+                        class="vertical-lines opacity-40" />
+                </svg>
             </div>
+
+            <!-- Logo section -->
             <div id="logo" class="fixed z-20 flex justify-center items-center gap-4 pt-8 w-full">
-                <img src="assets/pixelate-logo/P.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/I.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/X.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/E.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/L.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/A.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/T.svg" alt="Pixelate Logo" class="logo-text h-75">
-                <img src="assets/pixelate-logo/E.svg" alt="Pixelate Logo" class="logo-text h-75">
+                <img src="assets/pixelate-logo/P.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/I.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/X.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/E.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/L.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/A.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/T.svg" alt="Pixelate Logo" class="logo-text h-73">
+                <img src="assets/pixelate-logo/E.svg" alt="Pixelate Logo" class="logo-text h-73">
             </div>
-            <nav id="navbar"
-                class="fixed font-jean w-full top-90 z-30 flex justify-between items-center px-8 py-8">
+
+            <!-- Navigation bar -->
+            <nav id="navbar" class="fixed font-jean w-full top-90 z-40 flex justify-between items-center px-8 py-8">
                 <div class="flex space-x-8">
-                    <a href="#about" class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">Events</a>
-                    <a href="#projects" class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">LINKED
+                    <a href="#about" class="nav-text text-3xl text-[#FF6961] hover:text-white">Events</a>
+                    <a href="#projects" class="nav-text text-3xl text-[#FF6961] hover:text-white">LINKED
                         IN</a>
-                    <a href="#contact" class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">FB</a>
+                    <a href="#contact" class="nav-text text-3xl text-[#FF6961] hover:text-white">FB</a>
                 </div>
                 <div class="flex space-x-8">
-                    <a href="#about" class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">About</a>
-                    <a href="#projects"
-                        class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">Projects</a>
-                    <a href="#contact" class="nav-text text-3xl text-[#FF6961] hover:text-white transition-">Contact</a>
+                    <a href="#about" class="nav-text text-3xl text-[#FF6961] hover:text-white">About</a>
+                    <a href="#projects" class="nav-text text-3xl text-[#FF6961] hover:text-white">Projects</a>
+                    <a href="#contact" class="nav-text text-3xl text-[#FF6961] hover:text-white">Contact</a>
                 </div>
             </nav>
-            <div class="realative bg-black min-h-screen">
 
+            <!-- Hero section with text -->
+            <div class="relative z-30 min-h-screen">
+                <p id="heroPara"
+                    class="font-pt-mono text-xs absolute text-[#FCF8C9] m-10 right-0 bottom-0 max-w-md uppercase">Join
+                    our community of passionate designers, creators, and visionaries. At Pixelate, we craft pixels with
+                    purpose — exploring design, pushing boundaries, and bringing ideas to life. Let’s design the future,
+                    one pixel at a time.</p>
             </div>
-            <div class="bg-red-500 min-h-screen">
 
-            </div>
+            <!-- Extra scrollable screen for testing-->
+            <div class="bg-red-500 min-h-screen"></div>
         </div>
     </div>
 
