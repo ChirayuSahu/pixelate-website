@@ -4,6 +4,22 @@
   font-display: swap;
 }
 
+@font-face {
+    font-family: 'PT-Mono';
+    src: url('/fonts/PT-Mono.ttf') format('truetype');
+    font-display: swap;
+}
+
 .font-jean {
   font-family: 'JeanLuc-Bold', sans-serif;
+}
+
+.font-pt-mono {
+  font-family: 'PT-Mono', monospace;
+}
+
+.noise-bg {
+  background-image: url('/assets/noise.svg');
+  background-repeat: repeat;
+  opacity: 0.3;
 }
