@@ -7,6 +7,12 @@ const verticalLines = document.querySelectorAll('.vertical-lines');
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+ScrollSmoother.create({
+  smooth: 1,
+  effects: true,
+  smoothTouch: 0.3,
+});
+
 const timeline = gsap.timeline();
 
 timeline.fromTo(verticalLines, {
